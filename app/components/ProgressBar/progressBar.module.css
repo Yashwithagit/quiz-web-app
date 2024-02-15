@@ -1,0 +1,55 @@
+.circle__container {
+    fill: var(--primary-white);
+    stroke: var(--primary-white);
+}
+
+.circularProgressbar__container {
+    fill: none;
+    stroke: var(--light-gray);
+
+}
+
+.circle_inner_text_container {
+    fill: none;
+    stroke: var(--light-gray);
+}
+
+.circularProgressbar__innerContainer {
+    fill: none;
+    stroke: var(--light-green);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.circularProgressbar__progressValue {
+    font-size: 1.8rem;
+    font-weight: bold;
+    font-style: italic;
+
+}
+
+.circularProgressbar__totalCount {
+    font-style: normal;
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+
+
+.result_circle__container {
+    fill: none;
+    stroke: var(--light-gray);
+}
+
+
+.resultProgressbar__container {
+    fill: none;
+    stroke-width: 1rem;
+
+}
+
+
+.result_text {
+    font-weight: bold;
+    font-size: 2.4rem;
+}
