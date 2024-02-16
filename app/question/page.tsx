@@ -5,7 +5,6 @@ import { ScoreProgressBar } from '../components/ProgressBar/ScoreProgressBar';
 import { useEffect, useMemo, useState } from 'react';
 import { makeGetRequest, makePostRequest } from '../lib/apiService';
 import { QuestionProps } from '../lib/types';
-import DOMPurify from "dompurify";
 import { useRouter } from 'next/navigation';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -93,7 +92,7 @@ export default function Question() {
                     <ScoreProgressBar progressValue={questionId} totalCount={questionData?.totalCount ? questionData.totalCount : 0} />
                 </div>
                 <article className={styles.card__content}>
-                    <div className={styles.card__questionContent} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(questionData ? questionData.question_content : '') }} />
+                    <div className={styles.card__questionContent} dangerouslySetInnerHTML={{ __html: (questionData ? questionData.question_content : '') }} />
                     <div className={styles.card__answerList}>
                         {
                             answerListData
