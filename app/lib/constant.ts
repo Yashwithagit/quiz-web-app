@@ -17,6 +17,7 @@ export const API_BASE_PATH=`/api/`
 // API paths
 export const QUESTION_PATH='questions'
 export const RESULT_PATH='results'
+export const RESET_DATA='resetData'
 
 // status code
 export const STATUSCODE={

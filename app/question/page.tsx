@@ -51,9 +51,11 @@ export default function Question() {
     }
     // handle next question
     const handleNextQuestion = () => {
+        updateAnswer();
+
         if (questionData && questionData.totalCount !== undefined) {
             if (questionId + 1 <= questionData.totalCount) {
-                updateAnswer();
+                
                 setQuestionId((prevId) => prevId + 1);
             } else {
                 router.push('/result');

@@ -35,13 +35,6 @@
 }
 
 
-
-.result_circle__container {
-    fill: none;
-    stroke: var(--light-gray);
-}
-
-
 .resultProgressbar__container {
     fill: none;
     stroke-width: 1rem;

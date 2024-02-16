@@ -7,6 +7,7 @@ import { makeGetRequest } from '../lib/apiService';
 import { ResultProgressBar } from '../components/ProgressBar/ResultProgressBar';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { assert } from 'console';
 
 export default function Result() {
 
@@ -14,8 +15,8 @@ export default function Result() {
     const { StartAgain } = ButtonName
     const router = useRouter()
     const [resultData, setResultData] = useState({
-        0: 0,
-        1: 1
+        successCount: 0,
+        failCount: 0
     })
 
     // get question data
@@ -28,8 +29,22 @@ export default function Result() {
         }
     }
 
+    // get question data
+    const resetResultData = async () => {
+        try {
+             await makeGetRequest(RESULT_PATH,{reset:0});
+        } catch (error) {
+            toast.error(`${error}`);
+        }
+    }
 
 
+
+// handle Restart quiz
+    const handleReStartQuiz=()=>{
+        resetResultData()
+        router.push('/')
+    }
 
     useEffect(() => {
         getResultData()
@@ -45,7 +60,7 @@ export default function Result() {
                 <div className={styles.card__header}>
 
                     <h1 className='card__title'>Your Result</h1>
-                    <ResultProgressBar result={resultData[1]} total={resultData[1] + resultData[0]} />
+                    <ResultProgressBar result={resultData.successCount} total={resultData.successCount + resultData.failCount} />
                 </div>
                 <div className={styles.card__content}>
                     <div
@@ -54,7 +69,7 @@ export default function Result() {
                         <div className={`${styles.result__circle} ${styles.circle__success}`}>
 
                         </div>
-                        <p><span>{resultData[1]}</span>Correct</p>
+                        <p><span>{resultData.successCount}</span>Correct</p>
                     </div>
                     <div
                         className={styles.card__resultItem}
@@ -62,11 +77,11 @@ export default function Result() {
                         <div className={`${styles.result__circle} ${styles.circle__fail}`}>
 
                         </div>
-                        <p><span>{resultData[0]}</span>Incorrect</p>
+                        <p><span>{resultData.failCount}</span>Incorrect</p>
                     </div>
                 </div>
-                <div className={styles.btn__container}  >
-                    <button onClick={() => router.push('/')} className='btn'>{StartAgain} </button>
+                <div className='btn__container'  >
+                    <button onClick={ handleReStartQuiz} className='btn'>{StartAgain} </button>
                 </div>
             </section>
             <ToastContainer />

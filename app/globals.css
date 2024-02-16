@@ -45,7 +45,7 @@ a {
 
 
 .btn {
-width: 100%;
+width: 85%;
 background-color: var(--dark-red);
 padding:1rem 1.5rem;
 outline: none;
@@ -62,6 +62,13 @@ cursor: pointer;
 line-height: 1.4rem;
 }
 
+
+.btn__container {
+    display: flex;
+    flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
 .question__image{
   width: 85%;
   height: auto;
@@ -90,7 +97,7 @@ line-height: 1.4rem;
     border-top-left-radius: 2rem;
     position: relative;
     background-color: var(--primary-white);
- 
+  
 
 }
 

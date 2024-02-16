@@ -74,21 +74,31 @@ export const getQuestionById = (question_id: number) => questionList.find((quest
 //update answer
 export const updateAnswer = (question_id: number, answer_id: number) => {
     const question = questionList.find((question) => question.question_id === question_id && question.correct_answer_id === answer_id)
-
     if (question) {
-        question.result += 1
+        question.result = 1
     }
+    return question
 
 
 }
+export const resetResult=()=>questionList.map(question => {
+    return { ...question, result: 0 };
+});
+
 
 // get Result
 export const getResult = () => {
-    const resultCount: ResultCount = questionList.reduce((count, question) => {
-        count[question.result]++;
-        return count;
-    }, { 0: 0, 1: 0 } as ResultCount);
-    return resultCount;
+    let successCount = 0;
+    let failCount = 0;
+    questionList.forEach(question => {
+        if (question.result === 1) {
+            successCount++;
+        } else if (question.result === 0) {
+            failCount++;
+        }
+    });
+
+    return { successCount, failCount };
 };
 
 // get questionListCount

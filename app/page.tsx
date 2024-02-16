@@ -3,6 +3,8 @@ import styles from "./page.module.css";
 import { ImagePath,ButtonName } from "@/app/lib/constant";
 import Link from "next/link";
 
+
+
 export default function Home() {
   const {LogoImage}=ImagePath
     const {Start}=ButtonName
@@ -13,7 +15,7 @@ export default function Home() {
         upraised
       </div>
       <div className={styles.circle}>Quiz</div>
-      <Link className={styles.link__container}href={'/question'}><button className='btn'>{Start}</button></Link>
+      <Link className={`btn__container ${styles.link__container}`} href={'/question'}><button className='btn'>{Start}</button></Link>
     </main>
   );
 }

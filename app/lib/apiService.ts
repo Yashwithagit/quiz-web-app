@@ -24,6 +24,7 @@ export const makeGetRequest = async <T>( path:string,params?: Record<string, any
       Accept: 'application/json',
     },
   };
+  
   return customFetch<T>(getUrl, options);
 };
 
